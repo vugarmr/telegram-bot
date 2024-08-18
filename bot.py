@@ -32,8 +32,11 @@ async def main() -> None:
     application.add_handler(CommandHandler("break", break_request))
     application.add_handler(CallbackQueryHandler(handle_break_request))
 
+    # Запуск бота
     await application.run_polling()
 
+# Вызов основной функции в асинхронном контексте
 if __name__ == '__main__':
     import asyncio
-    asyncio.run(main())
+    # Используйте asyncio.run только если вы уверены, что цикл событий не запущен
+    asyncio.get_event_loop().run_until_complete(main())
